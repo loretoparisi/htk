@@ -35,6 +35,17 @@ i.e. you must register at the website and download it from
 there. Details about the terms under which HTK is made available can
 be found in the LICENSE file.
 
+Docker
+============
+Why Docker? I have added `docker` support since the HTK source code is out of date and does not compile on modern x86_64 architectures due to minor issues.
+To build this docker image
+
+```bash
+git clone https://github.com/loretoparisi/htk.git \
+cd htk/ \
+docker build -t htk-docker . \
+docker run --rm -it htk-docker
+```
 
 Compiling & Installing HTK under UNIX/Linux, OS X or Cygwin
 ===========================================================
@@ -166,16 +177,20 @@ $ ./runDemo configs/monPlainM1S1.dcf
 The recognition results obtained should match the following.
 
 On the training set:
+```
 ------------------------ Overall Results --------------------------
 SENT: %Correct=0.00 [H=0, S=7, N=7]
 WORD: %Corr=77.63, Acc=74.89 [H=170, D=37, S=12, I=6, N=219]
 ===================================================================
+```
 
 On the test set:
+```
 ------------------------ Overall Results --------------------------
 SENT: %Correct=0.00 [H=0, S=3, N=3]
 WORD: %Corr=63.91, Acc=59.40 [H=85, D=35, S=13, I=6, N=133]
 ===================================================================
+```
 
 NB to run this demo under Windows you must have perl installed and you
 need to invoke perl explicitly. See http://www.perl.org/ to download

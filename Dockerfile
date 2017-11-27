@@ -1,5 +1,6 @@
 #
-# numpy, scipy, theano, lasagne, pdnn, and htk
+# HTK (Hidden Markov Model Toolkit) Docker
+# v3.4.1
 # @author Loreto Parisi (loretoparisi at gmail dot com)
 # v1.0.0
 #
@@ -26,22 +27,11 @@ RUN \
 # pip
 RUN pip install --upgrade pip
 
-# copy & install compat-gcc-34-c++ compat-gcc-34
-#COPY lib/*.deb $HOME/
-#RUN \
-#    dpkg -i $HOME/compat-gcc-34-c++_3.4.6-20_amd64.deb && \
-#    dpkg -i $HOME/compat-gcc-34-c++_3.4.6-20_amd64.deb
-
-# numlib
-RUN pip install numpy scipy 
-# theano and lasagne
-RUN pip install theano lasagne
-
-# HTK
 RUN mkdir $HOME/htk
 COPY . $HOME/htk/
 WORKDIR $HOME/htk/
 RUN ./configure --disable-hslab && \
-    make
+    make all && \
+    make install
 
 CMD ["bash"]
