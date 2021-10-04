@@ -19,13 +19,13 @@ RUN \
     libc6-dev-i386 \
     libx11-dev \
     gawk \
-    python-dev \
-    python-pip \
+    python3-dev \
+    python3-pip \
     curl \
     git
 
 # pip
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 RUN mkdir $HOME/htk
 COPY . $HOME/htk/
